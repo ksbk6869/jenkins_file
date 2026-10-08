@@ -1,0 +1,26 @@
+pipeline {
+  agent any
+  stages {
+    stage ('fetching code from github repo') {
+      steps {
+        git branch: 'master' , url: 'https://github.com/dhanunjayasneha/maven.git'
+      }
+    }
+    stage ('coverting source code to executable code') {
+      steps {
+        build 'maven'
+      }
+    }
+    stage ('it is a testing phase') {
+       steps {
+       echo "this is a testing stage"
+    }
+
+   }
+   stage ('deployment stage') {
+     steps {
+       echo "this is a deploy stage"
+     }
+   }
+  }
+}
